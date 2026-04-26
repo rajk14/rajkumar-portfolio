@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, Router as WouterRouter } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -9,10 +10,8 @@ import Contact from "./pages/Contact";
 
 
 function Router() {
-  const base = import.meta.env.BASE_URL?.replace(/\/$/, '');
-  
   return (
-    <WouterRouter base={base}>
+    <WouterRouter hook={useHashLocation}>
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/404"} component={NotFound} />
