@@ -36,8 +36,11 @@ export default function ProfileImage({ src, variant = 'cyan' }: ProfileImageProp
           alt="Rajkumar Sinha" 
           className="w-full h-full object-cover object-top"
           onError={(e) => {
-            // Fallback to a placeholder if image doesn't exist
-            (e.target as HTMLImageElement).src = "https://ui-avatars.com/api/?name=Rajkumar+Sinha&background=0a0e27&color=00d9ff&size=512";
+            const target = e.target as HTMLImageElement;
+            // Prevent infinite loop if fallback also fails
+            if (!target.src.includes('ui-avatars.com')) {
+              target.src = "https://ui-avatars.com/api/?name=Rajkumar+Sinha&background=0a0e27&color=00d9ff&size=512";
+            }
           }}
         />
       </div>

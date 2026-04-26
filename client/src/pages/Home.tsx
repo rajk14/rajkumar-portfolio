@@ -152,7 +152,7 @@ export default function Home() {
 
           {/* Profile Image */}
           <div className="flex-1 w-full max-w-sm lg:max-w-none mt-12 lg:mt-0">
-            <ProfileImage src="/profile.png" variant="cyan" />
+            <ProfileImage src={`${import.meta.env.BASE_URL}profile.png`} variant="cyan" />
           </div>
         </section>
 
